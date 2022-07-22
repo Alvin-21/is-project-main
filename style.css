@@ -1,0 +1,40 @@
+body {
+  background-color: #fff0e5;
+}
+
+.form-group input {
+  border-color: black;
+}
+
+.form-group input:hover, .form-group input:focus {
+  border-color: rgb(138, 43, 226);
+}
+
+.form-group input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(138, 43, 226, 0.25);
+}
+
+.btn-custom {
+  background-color: #3a10e5;
+  border: none;
+}
+
+.btn-custom:hover {
+  background-color: rgba(58, 16, 229, 0.8);
+}
+
+a {
+  color: #3a10e5;
+}
+
+a:hover {
+  color: rgba(58, 16, 229, 0.8);
+}
+
+.error {
+  color: #be1809;
+}
+
+.success {
+  color: rgb(44, 216, 44);
+}
