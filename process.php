@@ -48,8 +48,15 @@ if (isset($_POST['reg_user'])) {
   }
 
   // Finally, register user if there are no errors in the form
+  function encryptPassword($password){
+		$salt = "!*@&#^";
+		$saltedpassword = $salt.$password.$salt;
+		$hashpassword = md5($saltedpassword);
+		return $hashpassword;
+	}
+
   if (count($errors) == 0) {
-  	$password = md5($password);//encrypt the password before saving in the database
+  	$password = encryptPassword($password);//encrypt the password before saving in the database
 
   	$query = "INSERT INTO cms1_user (username, email, password) 
   			  VALUES('$username', '$email', '$password')";
