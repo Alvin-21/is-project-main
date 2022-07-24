@@ -33,7 +33,7 @@ if (isset($_POST['reg_user'])) {
 
   // first check the database to make sure 
   // a user does not already exist with the same username
-  $user_check_query = "SELECT * FROM cms1_user WHERE username='$username' OR email='$email' LIMIT 1";
+  $user_check_query = "SELECT * FROM user WHERE username='$username' OR email='$email' LIMIT 1";
   $result = mysqli_query($db, $user_check_query);
   $user = mysqli_fetch_assoc($result);
   
@@ -60,9 +60,51 @@ if (isset($_POST['reg_user'])) {
 
   	$query = "INSERT INTO user (user_id, user_type, f_name, l_name, username, phone_number, email, password) 
   			  VALUES(null, '$user_type', '$f_name', '$l_name', '$username', '$phone_number', '$email', '$password')";
-          
-  	$is_inserted = mysqli_query($db, $query);
 
+    $is_inserted = mysqli_query($db, $query);
+
+    $registered_user_query = "SELECT * FROM user WHERE username='$username' AND password='$password'";
+  	$registered_results = mysqli_query($db, $registered_user_query);
+    $registered_user = mysqli_fetch_assoc($registered_results);
+
+    // Adds user data to the database when the user selects employee or admin
+    switch ($registered_user['user_type']) {
+      case 'employee':
+        $registered_user_id = $registered_user['user_id'];
+        $employee_query = "INSERT INTO employee (employee_id, user_id) VALUES (null, '$registered_user_id')";
+        mysqli_query($db, $employee_query);
+        break;
+      
+      case 'admin':
+        $registered_user_id = $registered_user['user_id'];
+        $admin_query = "INSERT INTO admin (admin_id, user_id) VALUES (null, '$registered_user_id')";
+        mysqli_query($db, $admin_query);
+    }
+
+    // Adds user data to the database when the user selects court official or record officer
+    switch ($occupation) {
+      case 'court_official':
+        $registered_user_id = $registered_user['user_id'];
+        $registered_employee_query = "SELECT * FROM employee WHERE user_id='$registered_user_id'";
+        $registered_employee_results = mysqli_query($db, $registered_employee_query);
+        $registered_employee = mysqli_fetch_assoc($registered_employee_results);
+        $registered_employee_id = $registered_employee['employee_id'];
+        $court_official_query = "INSERT INTO court_official (court_official_id, employee_id, occupation) VALUES (null, '$registered_employee_id', '$occupation')";
+        mysqli_query($db, $court_official_query);
+        break;
+      
+      case 'record_officer':
+        $registered_user_id = $registered_user['user_id'];
+        $registered_employee_query = "SELECT * FROM employee WHERE user_id='$registered_user_id'";
+        $registered_employee_results = mysqli_query($db, $registered_employee_query);
+        $registered_employee = mysqli_fetch_assoc($registered_employee_results);
+        $registered_employee_id = $registered_employee['employee_id'];
+        $record_officer_query = "INSERT INTO record_officer (record_officer_id, employee_id, occupation) VALUES (null, '$registered_employee_id', '$occupation')";
+        mysqli_query($db, $record_officer_query);
+        break;
+    }
+
+    // Redirects user to the appropriate page after registration
     if ($is_inserted) {
       header('Location: login.php');
     } else {
