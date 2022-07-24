@@ -12,11 +12,11 @@ $db = mysqli_connect('localhost', 'root', '', 'cms');
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
   // receive all input values from the form
-  $user_type = $_POST['user_type'];
-  $occupation = $_POST['occupation'];
-  $f_name = $_POST['f_name'];
-  $l_name = $_POST['l_name'];
-  $phone_number = $_POST['phone_number'];
+  $user_type = mysqli_real_escape_string($db,$_POST['user_type']);
+  $occupation = mysqli_real_escape_string($db,$_POST['occupation']);
+  $f_name = mysqli_real_escape_string($db,$_POST['f_name']);
+  $l_name = mysqli_real_escape_string($db,$_POST['l_name']);
+  $phone_number = mysqli_real_escape_string($db, $_POST['phone_number']);
   $username = mysqli_real_escape_string($db, $_POST['username']);
   $email = mysqli_real_escape_string($db, $_POST['email']);
   $password = mysqli_real_escape_string($db, $_POST['password']);
@@ -58,12 +58,16 @@ if (isset($_POST['reg_user'])) {
   if (count($errors) == 0) {
   	$password = encryptPassword($password);//encrypt the password before saving in the database
 
-  	$query = "INSERT INTO cms1_user (username, email, password) 
-  			  VALUES('$username', '$email', '$password')";
-  	mysqli_query($db, $query);
-  	$_SESSION['username'] = $username;
-  	$_SESSION['success'] = "You have signed up successfully.";
-  	header('location: index.php');
+  	$query = "INSERT INTO user (user_id, user_type, f_name, l_name, username, phone_number, email, password) 
+  			  VALUES(null, '$user_type', '$f_name', '$l_name', '$username', '$phone_number', '$email', '$password')";
+          
+  	$is_inserted = mysqli_query($db, $query);
+
+    if ($is_inserted) {
+      header('Location: login.php');
+    } else {
+      header('Location: register.php');
+    }
   }
 }
 
