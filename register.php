@@ -79,7 +79,7 @@
 									<button type="submit" name="reg_user" class="btn form-control btn-primary rounded submit px-3 btn-custom">Sign Up</button>
 								</div>
 							</form>
-							<div class="w-100 text-center my-4 text">
+							<div class="w-100 my-4 text">
 								<p class="mb-0">Already one of us?</p>
 								<a href="./login.php">Login</a>
 							</div>
