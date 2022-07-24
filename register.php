@@ -11,77 +11,69 @@
         <title>CMS | Registration</title>
     </head>
     <body>
-        <div class="header">
-            <!-- <h2>Register</h2> -->
-        </div>  
-        <!-- <form method="post" action="register.php">
-            <?php include('errors.php'); ?>
-            <div class="input-group">
-                <label>Username</label>
-                <input type="text" name="username" value="<?php echo $username; ?>">
-            </div>
-            <div class="input-group">
-  	            <label>Email</label>
-  	            <input type="email" name="email" value="<?php echo $email; ?>">
-        	</div>
-            <div class="input-group">
-                <label>Password</label>
-                <input type="password" name="password">
-            </div>
-            <div class="input-group">
-                <label>Confirm password</label>
-                <input type="password" name="confirm_password">
-            </div>
-            <div class="input-group">
-                <button type="submit" class="btn" name="reg_user">Register</button>
-            </div>
-            <p>
-                Already one of us? <a href="login.php" class="reg">Login</a>
-            </p>
-        </form> -->
-
         <section class="ftco-section">
 			<div class="container">
 				<div class="row justify-content-center">
-					<div class="col-md-6 text-center my-3">
-						<h2 class="heading-section">Get started now</h2>
-					</div>
-				</div>
-				<div class="row justify-content-center">
 					<div class="col-md-6 col-lg-4">
+						<div class="my-3">
+							<h2 class="heading-section">Get started now</h2>
+						</div>
 						<div class="login-wrap py-0">
-							<h3 class="text-center mb-0">Welcome</h3>
-							<p class="text-center">Register by entering the information below</p>
 							<form method="post" action="register.php" class="login-form">
 								<?php include('errors.php'); ?>
-								<span>Select the type of user:</span>
+								<span>Select user type:</span>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="user_type" id="regular_user" value="1" checked>
-									<label class="form-check-label" for="regular_user">
-										Regular User
+									<input class="form-check-input" type="radio" name="user_type" id="employee" value="employee" checked>
+									<label class="form-check-label" for="employee">
+										Employee
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="user_type" id="admin" value="2">
+									<input class="form-check-input" type="radio" name="user_type" id="admin" value="admin">
 									<label class="form-check-label" for="admin">
 										Admin
 									</label>
 								</div>
+								<span>Select your occupation:</span>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="occupation" id="court_official" value="court_official" checked>
+									<label class="form-check-label" for="court_official">
+										Court Official
+									</label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="occupation" id="record_officer" value="record_officer">
+									<label class="form-check-label" for="record_officer">
+										Record Officer
+									</label>
+								</div>
+								<div class="form-group mb-3">
+									<label class="form-label">First Name</label>
+									<input type="text" name="f_name" class="form-control" placeholder="John" required>
+								</div>
+								<div class="form-group mb-3">
+									<label class="form-label">Last Name</label>
+									<input type="text" name="l_name" class="form-control" placeholder="Doe" required>
+								</div>
+								<div class="form-group mb-3">
+									<label class="form-label">Phone Number</label>
+									<input type="text" name="username" class="form-control" placeholder="0712345678" minlength="10" required>
+								</div>
 								<div class="form-group mb-3">
 									<label class="form-label">Username</label>
-									<input type="text" name="username" value="<?php echo $username; ?>" class="form-control" placeholder="Username" required>
+									<input type="text" name="username" value="<?php echo $username; ?>" class="form-control" placeholder="john" required>
 								</div>
                                 <div class="form-group mb-3">
 									<label class="form-label">Email</label>
-									<input type="email" name="email" value="<?php echo $email; ?>" class="form-control" placeholder="jane@example.com" required>
+									<input type="email" name="email" value="<?php echo $email; ?>" class="form-control" placeholder="johndoe@example.com" required>
 								</div>
 								<div class="form-group mb-3">
 									<label class="form-label">Password</label>
-									<input type="password" name="password" class="form-control" placeholder="Password" required>
+									<input type="password" name="password" class="form-control" placeholder="********" minlength="8" autocomplete="new-password" required>
 								</div>
                                 <div class="form-group mb-3">
 									<label class="form-label">Confirm password</label>
-									<input type="text" name="confirm_password" class="form-control" placeholder="Password" required>
+									<input type="password" name="confirm_password" class="form-control" placeholder="********" minlength="8" autocomplete="new-password" required>
 								</div>
 								<div class="form-group mb-3">
 									<button type="submit" name="reg_user" class="btn form-control btn-primary rounded submit px-3 btn-custom">Sign Up</button>
