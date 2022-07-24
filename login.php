@@ -28,7 +28,7 @@
 								</div>
 								<div class="form-group">
 									<label class="form-label">Password</label>
-									<input type="password" name="password" class="form-control black" placeholder="********" required>
+									<input type="password" name="password" class="form-control black" placeholder="********" autocomplete="current-password" required>
 								</div>
 								<div class="form-group my-3 d-md-flex">
 									<div class="w-100 text-md-end">
@@ -39,7 +39,7 @@
 									<button type="submit" name="login_user" class="btn form-control btn-primary rounded submit px-3 btn-custom">Login</button>
 								</div>
 							</form>
-							<div class="w-100 text-center mt-4 text">
+							<div class="w-100 mt-4 text">
 								<p class="mb-0">Not yet a member, join us now!</p>
 								<a href="./register.php">Sign Up</a>
 							</div>
