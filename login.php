@@ -16,19 +16,19 @@
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-md-6 col-lg-4">
-					<div class="mt-5 mb-1">
-						<h2 class="heading-section">Log in to CMS</h2>
-					</div>
+						<div class="mt-5 mb-1">
+							<h3 class="heading-section">Log in to CMS</h3>
+						</div>
 						<div class="login-wrap py-0">
 							<form method="post" action="login.php" class="login-form">
 								<?php include('errors.php'); ?>
 								<div class="form-group mb-3">
 									<label class="form-label">Username</label>
-									<input type="text" name="username" class="form-control black" placeholder="Username" required>
+									<input type="text" name="username" class="form-control black" placeholder="john" required>
 								</div>
 								<div class="form-group">
 									<label class="form-label">Password</label>
-									<input type="password" name="password" class="form-control black" placeholder="Password" required>
+									<input type="password" name="password" class="form-control black" placeholder="********" required>
 								</div>
 								<div class="form-group my-3 d-md-flex">
 									<div class="w-100 text-md-end">
