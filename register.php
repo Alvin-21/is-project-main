@@ -57,7 +57,7 @@
 								</div>
 								<div class="form-group mb-3">
 									<label class="form-label">Phone Number</label>
-									<input type="text" name="username" class="form-control" placeholder="0712345678" minlength="10" required>
+									<input type="text" name="phone_number" class="form-control" placeholder="0712345678" minlength="10" required>
 								</div>
 								<div class="form-group mb-3">
 									<label class="form-label">Username</label>

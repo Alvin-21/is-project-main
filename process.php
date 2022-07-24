@@ -7,11 +7,16 @@ $email    = "";
 $errors = array(); 
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'cms1');
+$db = mysqli_connect('localhost', 'root', '', 'cms');
 
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
   // receive all input values from the form
+  $user_type = $_POST['user_type'];
+  $occupation = $_POST['occupation'];
+  $f_name = $_POST['f_name'];
+  $l_name = $_POST['l_name'];
+  $phone_number = $_POST['phone_number'];
   $username = mysqli_real_escape_string($db, $_POST['username']);
   $email = mysqli_real_escape_string($db, $_POST['email']);
   $password = mysqli_real_escape_string($db, $_POST['password']);

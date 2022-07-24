@@ -49,3 +49,11 @@ create table `case_file` (
   primary key (`file_id`),
   foreign key (`user_id`) references user(`user_id`)
 ) ENGINE=InnoDB;
+
+alter table `user` (
+  add constraint `uc_user` unique (`username`, `email`)
+);
+
+alter table `case_file` (
+  add constraint `uc_case_file` unique (`case_number`)
+);
