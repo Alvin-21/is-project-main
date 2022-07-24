@@ -12,39 +12,14 @@
 		<title>CMS | Login</title>
     </head>
     <body>
-        <div class="header">
-            <!-- <h2>Log in to CMS</h2> -->
-        </div>
-        <!-- <form method="post" action="login.php">
-            <?php include('errors.php'); ?>
-            <div class="input-group">
-                <label>Usernamey</label>
-                <input type="text" name="username">
-            </div>
-            <div class="input-group">
-                <label>Password</label>
-                <input type="password" name="password">
-            </div>
-            <div class="input-group">
-                <button type="submit" class="btn" name="login_user">Login</button>
-            </div>
-            <p>
-                Not yet a member, join us now! <a href="register.php">Sign up</a>
-            </p>
-        </form> -->
-
 		<section class="ftco-section">
 			<div class="container">
 				<div class="row justify-content-center">
-					<div class="col-md-6 text-center my-5">
+					<div class="col-md-6 col-lg-4">
+					<div class="mt-5 mb-1">
 						<h2 class="heading-section">Log in to CMS</h2>
 					</div>
-				</div>
-				<div class="row justify-content-center">
-					<div class="col-md-6 col-lg-4">
 						<div class="login-wrap py-0">
-							<h3 class="text-center mb-0">Welcome</h3>
-							<p class="text-center">Sign in by entering the information below</p>
 							<form method="post" action="login.php" class="login-form">
 								<?php include('errors.php'); ?>
 								<div class="form-group mb-3">
