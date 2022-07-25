@@ -34,18 +34,21 @@
 										Admin
 									</label>
 								</div>
-								<span>Select your occupation:</span>
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="occupation" id="court_official" value="court_official" checked>
-									<label class="form-check-label" for="court_official">
-										Court Official
-									</label>
-								</div>
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="occupation" id="record_officer" value="record_officer">
-									<label class="form-check-label" for="record_officer">
-										Record Officer
-									</label>
+								<div id="temp_occupation"></div>
+								<div id="occupation">
+									<span>Select your occupation:</span>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="occupation" id="court_official" value="court_official" checked>
+										<label class="form-check-label" for="court_official">
+											Court Official
+										</label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="occupation" id="record_officer" value="record_officer">
+										<label class="form-check-label" for="record_officer">
+											Record Officer
+										</label>
+									</div>
 								</div>
 								<div class="form-group mb-3">
 									<label class="form-label">First Name</label>
@@ -89,6 +92,13 @@
 			</div>
 		</section>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+		<!-- Jquery JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+		<!-- Bootstrap JS -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+		<!-- Script JS -->
+		<script src="js/script.js"></script>
     </body>
 </html>
