@@ -38,3 +38,7 @@ a:hover {
 .success {
   color: rgb(44, 216, 44);
 }
+
+.font-size {
+  font-size: 1rem !important;
+}

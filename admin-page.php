@@ -29,8 +29,10 @@
     <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="css/theme.css" rel="stylesheet" media="all">
-    <link href="css/style.css" rel="stylesheet" media="all">
+    <style>
+		<?php include "css/theme.css" ?>
+        <?php include "css/style.css" ?>
+	</style>
 
 </head>
 
@@ -42,24 +44,24 @@
                 <div class="header3-wrap">
                     <div class="header__logo">
                         <div>
-                            <img src="images/icon/logo-white.png" alt="CoolAdmin">
+                            <h1 class="text-white">CMS Admin</h1>
                         </div>
                     </div>
                     <div class="header__navbar">
                         <ul class="list-unstyled">
-                            <li class="">
-                                <a href="#">
+                            <li>
+                                <a href="#" class="font-size">
                                     <i class="fas fa-tachometer-alt"></i>Dashboard
                                     <span class="bot-line"></span>
                                 </a> 
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="#" class="font-size">
                                     <i class="fas fa-users"></i>
                                     <span class="bot-line"></span>User Table</a>
                             </li>
                             <li>
-                                <a href="table.html">
+                                <a href="table.html" class="font-size">
                                     <i class="fa fa-file"></i>
                                     <span class="bot-line"></span>Case Files</a>
                             </li>
@@ -105,9 +107,9 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <figure class="logo">
-                            <img src="images/icon/logo-white.png" alt="CoolAdmin" />
-                        </figure>
+                        <div>
+                            <h2 class="text-white">CMS Admin</h2>
+                        </div>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
                                 <span class="hamburger-inner"></span>
