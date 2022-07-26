@@ -203,7 +203,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h1 class="title-4">Welcome
-                                <span><?php echo $_SESSION['user_details']['f_name']; ?>a!</span>
+                                <span><?php echo $_SESSION['user_details']['f_name']; ?>!</span>
                             </h1>
                             <hr class="line-seprate">
                         </div>

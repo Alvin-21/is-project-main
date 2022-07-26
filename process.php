@@ -138,11 +138,11 @@ if (isset($_POST['login_user'])) {
 
       switch ($role) {
         case 'admin':
-          header('location: index.php');
+          header('location: admin-page.php');
           break;
         
         case 'employee':
-          header('location: register.php');
+          header('location: index.php');
           break;
       }
     } else {
