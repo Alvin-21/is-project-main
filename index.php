@@ -77,8 +77,8 @@
                                             <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                         </figure>
                                         <div class="content" >
-                                            <h5 class="name">John Doe</h5>
-                                            <span class="email">johndoe@example.com</span>
+                                            <h5 class="name"><?php echo $_SESSION['user_details']['f_name']; ?> <?php echo $_SESSION['user_details']['l_name']; ?></h5>
+                                            <span class="email"><?php echo $_SESSION['user_details']['email']; ?></span>
                                         </div>
                                     </div>
                                     <div class="account-dropdown__body">
@@ -87,7 +87,7 @@
                                                 <i class="zmdi zmdi-account"></i>Account</a>
                                         </div>
                                         <div class="account-dropdown__item">
-                                            <a href="#">
+                                            <a href="logout.php">
                                                 <i class="zmdi zmdi-power"></i>Logout</a>
                                         </div>
                                     </div>
@@ -143,7 +143,7 @@
                             <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                         </div>
                         <div class="content">
-                            <a class="js-acc-btn" href="#">john doe</a>
+                            <a class="js-acc-btn" href="#"><?php echo $_SESSION['user_details']['f_name']; ?> <?php echo $_SESSION['user_details']['l_name']; ?></a>
                         </div>
                         <div class="account-dropdown js-dropdown">
                             <div class="info clearfix" style="cursor: default;">
@@ -151,8 +151,8 @@
                                     <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                 </figure>
                                 <div class="content">
-                                    <h5 class="name">John Doe</h5>
-                                    <span class="email">johndoe@example.com</span>
+                                    <h5 class="name"><?php echo $_SESSION['user_details']['f_name']; ?> <?php echo $_SESSION['user_details']['l_name']; ?></h5>
+                                    <span class="email"><?php echo $_SESSION['user_details']['email']; ?></span>
                                 </div>
                             </div>
                             <div class="account-dropdown__body">
@@ -161,7 +161,7 @@
                                         <i class="zmdi zmdi-account"></i>Account</a>
                                 </div>
                                 <div class="account-dropdown__item">
-                                    <a href="#">
+                                    <a href="logout.php">
                                         <i class="zmdi zmdi-power"></i>Logout</a>
                                 </div>
                             </div> 
@@ -203,7 +203,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h1 class="title-4">Welcome
-                                <span>John!</span>
+                                <span><?php echo $_SESSION['user_details']['f_name']; ?>a!</span>
                             </h1>
                             <hr class="line-seprate">
                         </div>
