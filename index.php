@@ -185,11 +185,11 @@
                                 <div class="au-breadcrumb-left">
                                     <span class="au-breadcrumb-span">You are here:</span>
                                     <ul class="list-unstyled list-inline au-breadcrumb__list">
-                                        <li class="list-inline-item active">Admin Panel</li>
+                                        <li class="list-inline-item active">CMS</li>
                                         <li class="list-inline-item seprate">
                                             <span>/</span>
                                         </li>
-                                        <li class="list-inline-item">Dashboard</li>
+                                        <li class="list-inline-item">Home</li>
                                     </ul>
                                 </div>
                             </div>
