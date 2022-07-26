@@ -9,6 +9,14 @@ $errors = array();
 // connect to the database
 $db = mysqli_connect('localhost', 'root', '', 'cms');
 
+// password encryption
+function encryptPassword($password){
+  $salt = "!*@&#^";
+  $saltedpassword = $salt.$password.$salt;
+  $hashpassword = md5($saltedpassword);
+  return $hashpassword;
+}
+
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
   // receive all input values from the form
@@ -48,13 +56,6 @@ if (isset($_POST['reg_user'])) {
   }
 
   // Finally, register user if there are no errors in the form
-  function encryptPassword($password){
-		$salt = "!*@&#^";
-		$saltedpassword = $salt.$password.$salt;
-		$hashpassword = md5($saltedpassword);
-		return $hashpassword;
-	}
-
   if (count($errors) == 0) {
   	$password = encryptPassword($password);//encrypt the password before saving in the database
 
@@ -126,25 +127,27 @@ if (isset($_POST['login_user'])) {
   }
 
   if (count($errors) == 0) {
-  	$password = md5($password);
-  	$query = "SELECT * FROM cms1_user WHERE username='$username' AND password='$password'";
+  	$password = encryptPassword($password);
+  	$query = "SELECT * FROM user WHERE username='$username' AND password='$password'";
   	$results = mysqli_query($db, $query);
   	if (mysqli_num_rows($results) == 1) {
       $logged_in_user = mysqli_fetch_assoc($results);
-			if ($logged_in_user['user_type'] == '1') {
+      $_SESSION['user_details'] = $logged_in_user;
+      $_SESSION['is_logged_in'] = true;
+      $role = $logged_in_user['user_type'];
 
-				$_SESSION['username'] = $username;
-				$_SESSION['success']  = "You are now logged in";
-				header('location: index.php');		  
-			} else{
-				$_SESSION['username'] = $username;
-				$_SESSION['success']  = "You are now logged in";
-
-				header('location: register.php');
-			}
-  	} else {
-  		array_push($errors, "Wrong username/password");
-  	}
+      switch ($role) {
+        case 'admin':
+          header('location: index.php');
+          break;
+        
+        case 'employee':
+          header('location: register.php');
+          break;
+      }
+    } else {
+      array_push($errors, "Wrong username/password");
+    }
   }
 }
 

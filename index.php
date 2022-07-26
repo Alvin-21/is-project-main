@@ -1,7 +1,7 @@
 <?php 
   session_start(); 
 
-  if (!isset($_SESSION['username'])) {
+  if (!isset($_SESSION['is_logged_in'])) {
   	$_SESSION['msg'] = "You must login first";
   	header('location: login.php');
   }
@@ -36,8 +36,8 @@
             </div>
             <?php endif ?>
 
-            <?php  if (isset($_SESSION['username'])) : ?>
-                <p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
+            <?php  if (isset($_SESSION['is_logged_in'])) : ?>
+                <p>Welcome <strong><?php echo $_SESSION['user_details']['f_name']; ?></strong></p>
                 <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
             <?php endif ?>
         </div>
