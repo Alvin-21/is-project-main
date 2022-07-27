@@ -130,7 +130,7 @@ if (!isset($_SESSION['is_logged_in'])) {
                         </li>
                         <li>
                             <a href="#">
-                                <i class="far fa-file"></i>Case Files</a>
+                                <i class="fas fa-file"></i>Case Files</a>
                         </li>
                     </ul>
                 </div>
@@ -215,6 +215,13 @@ if (!isset($_SESSION['is_logged_in'])) {
 
             <!-- USER TABLE -->
             <section>
+                <?php
+
+                require_once("connection.php");
+                $query = "select * from user";
+                $result = mysqli_query($db, $query);
+
+                ?>
                 <h1 class="text-center">USER TABLE</h1>
                 <div class="table-responsive px-4">
                     <table class="table">
@@ -227,36 +234,44 @@ if (!isset($_SESSION['is_logged_in'])) {
                                 <th scope="col">Username</th>
                                 <th scope="col">Phone Number</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
+                            <?php
+
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $user_id = $row['user_id'];
+                                $user_type = $row['user_type'];
+                                $f_name = $row['f_name'];
+                                $l_name = $row['l_name'];
+                                $username = $row['username'];
+                                $phone_number = $row['phone_number'];
+                                $email = $row['email'];
+                            ?>
+
+                                <tr>
+                                    <td><?php echo $user_id ?></td>
+                                    <td><?php echo $user_type ?></td>
+                                    <td><?php echo $f_name ?></td>
+                                    <td><?php echo $l_name ?></td>
+                                    <td><?php echo $username ?></td>
+                                    <td><?php echo $phone_number ?></td>
+                                    <td><?php echo $email ?></td>
+                                    <td>
+                                        <a href="#">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="#">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
