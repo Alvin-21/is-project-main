@@ -36,7 +36,7 @@
 							<h2 class="heading-section">Edit User Information</h2>
 						</div>
 						<div class="login-wrap py-0">
-							<form method="post" action="update.php" class="login-form">
+							<form method="post" action="update.php?userID=<?php echo $user_id; ?>" id="class="login-form">
 								<span>Select user type:</span>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="user_type" id="employee" value="employee" checked>
@@ -68,26 +68,26 @@
 								</div>
 								<div class="form-group mb-3">
 									<label class="form-label">First Name</label>
-									<input type="text" name="f_name" class="form-control" placeholder="<?php echo $f_name ?>" required>
+									<input type="text" name="f_name" class="form-control" value="<?php echo $f_name ?>" required>
 								</div>
 								<div class="form-group mb-3">
 									<label class="form-label">Last Name</label>
-									<input type="text" name="l_name" class="form-control" placeholder="<?php echo $l_name ?>" required>
+									<input type="text" name="l_name" class="form-control" value="<?php echo $l_name ?>" required>
 								</div>
 								<div class="form-group mb-3">
 									<label class="form-label">Phone Number</label>
-									<input type="text" name="phone_number" class="form-control" placeholder="<?php echo $phone_number ?>" minlength="10" required>
+									<input type="text" name="phone_number" class="form-control" value="<?php echo $phone_number ?>" minlength="10" required>
 								</div>
 								<div class="form-group mb-3">
 									<label class="form-label">Username</label>
-									<input type="text" name="username" class="form-control" placeholder="<?php echo $username ?>" required>
+									<input type="text" name="username" class="form-control" value="<?php echo $username ?>" required>
 								</div>
                                 <div class="form-group mb-3">
 									<label class="form-label">Email</label>
-									<input type="email" name="email" class="form-control" placeholder="<?php echo $email ?>" required>
+									<input type="email" name="email" class="form-control" value="<?php echo $email ?>" required>
 								</div>
 								<div class="form-group mb-3" >
-									<button type="submit" name="reg_user" class="btn form-control btn-primary rounded submit px-3 btn-custom">Update</button>
+									<button type="submit" name="update" class="btn form-control btn-primary rounded submit px-3 btn-custom">Update</button>
 								</div>
 							</form>
 						</div>
