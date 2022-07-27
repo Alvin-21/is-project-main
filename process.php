@@ -6,8 +6,7 @@ $username = "";
 $email    = "";
 $errors = array(); 
 
-// connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'cms');
+include("connection.php");
 
 // password encryption
 function encryptPassword($password){
