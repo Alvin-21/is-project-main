@@ -260,7 +260,7 @@ if (!isset($_SESSION['is_logged_in'])) {
                                     <td><?php echo $phone_number ?></td>
                                     <td><?php echo $email ?></td>
                                     <td>
-                                        <a href="#">
+                                        <a href="user-edit.php?userID=<?php echo $user_id ?>">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                     </td>
