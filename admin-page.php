@@ -1,9 +1,9 @@
-<?php 
-  session_start(); 
+<?php
+session_start();
 
-  if (!isset($_SESSION['is_logged_in'])) {
-  	header('location: login.php');
-  }
+if (!isset($_SESSION['is_logged_in'])) {
+    header('location: login.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -30,9 +30,8 @@
 
     <!-- Main CSS-->
     <style>
-		<?php include "css/theme.css" ?>
-        <?php include "css/style.css" ?>
-	</style>
+        <?php include "css/theme.css" ?><?php include "css/style.css" ?>
+    </style>
 
 </head>
 
@@ -53,7 +52,7 @@
                                 <a href="#" class="font-size">
                                     <i class="fas fa-tachometer-alt"></i>Dashboard
                                     <span class="bot-line"></span>
-                                </a> 
+                                </a>
                             </li>
                             <li>
                                 <a href="#" class="font-size">
@@ -78,7 +77,7 @@
                                         <figure class="image">
                                             <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                         </figure>
-                                        <div class="content" >
+                                        <div class="content">
                                             <h5 class="name"><?php echo $_SESSION['user_details']['f_name']; ?> <?php echo $_SESSION['user_details']['l_name']; ?></h5>
                                             <span class="email"><?php echo $_SESSION['user_details']['email']; ?></span>
                                         </div>
@@ -166,7 +165,7 @@
                                     <a href="logout.php">
                                         <i class="zmdi zmdi-power"></i>Logout</a>
                                 </div>
-                            </div> 
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -213,8 +212,54 @@
                 </div>
             </section>
             <!-- END WELCOME-->
+
+            <!-- USER TABLE -->
             <section>
                 <h1 class="text-center">USER TABLE</h1>
+                <div class="table-responsive px-4">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">User ID</th>
+                                <th scope="col">User Type</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Phone Number</th>
+                                <th scope="col">Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </section>
             <!-- COPYRIGHT-->
             <section class="p-t-60 p-b-20">
@@ -239,7 +284,7 @@
     <!-- Bootstrap JS-->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    
+
     <!-- Vendor JS       -->
     <script src="vendor/animsition/animsition.min.js"></script>
 
