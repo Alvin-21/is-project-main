@@ -234,9 +234,14 @@ if (!isset($_SESSION['is_logged_in'])) {
                 <button id="show-current" class="btn btn-primary rounded px-3 ml-4 mb-3">
                     <i class="fas fa-user"></i> View current users
                 </button>
+
+                <!-- CURRENT USER TABLE -->
                 <div class="table-responsive px-4">
                     <table id="current-users" class="table">
                         <thead>
+                            <tr>
+                                <th scope="col" colspan="9" class="text-center">Current Users</th>
+                            </tr>
                             <tr>
                                 <th scope="col">User ID</th>
                                 <th scope="col">User Type</th>
@@ -286,9 +291,14 @@ if (!isset($_SESSION['is_logged_in'])) {
                         </tbody>
                     </table>
                 </div>
+
+                <!-- DELETED USER TABLE -->
                 <div class="table-responsive px-4">
                     <table id="deleted-users" class="table" style="display: none;">
                         <thead>
+                            <tr>
+                                <th scope="col" colspan="9" class="text-center">Deleted Users</th>
+                            </tr>
                             <tr>
                                 <th scope="col">User ID</th>
                                 <th scope="col">User Type</th>
@@ -329,7 +339,7 @@ if (!isset($_SESSION['is_logged_in'])) {
                                     </td>
                                     <td>
                                         <a href="user-delete.php?userID=<?php echo $deleted_user_id ?>">
-                                            <i class="fas fa-trash"></i> 1
+                                            <i class="fas fa-trash"></i>
                                         </a>
                                     </td>
                                 </tr>
