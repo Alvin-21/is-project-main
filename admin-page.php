@@ -220,8 +220,8 @@ if (!isset($_SESSION['is_logged_in'])) {
                 require_once("connection.php");
                 $query = "select * from user where is_deleted = 0";
                 $result = mysqli_query($db, $query);
-                $query1 = "select * from user where is_deleted = 0";
-                $result1 = mysqli_query($db, $query1);
+                $deleted_users = "select * from user where is_deleted = 1";
+                $deleted_users_result = mysqli_query($db, $deleted_users);
 
                 ?>
                 <h1 class="text-center">USER TABLE</h1>
@@ -304,31 +304,31 @@ if (!isset($_SESSION['is_logged_in'])) {
                         <tbody>
                             <?php
 
-                            while ($row1 = mysqli_fetch_assoc($result1)) {
-                                $user_id1 = $row1['user_id'];
-                                $user_type1 = $row1['user_type'];
-                                $f_name1 = $row1['f_name'];
-                                $l_name1 = $row1['l_name'];
-                                $username1 = $row1['username'];
-                                $phone_number1 = $row1['phone_number'];
-                                $email1 = $row1['email'];
+                            while ($deleted_user_row = mysqli_fetch_assoc($deleted_users_result)) {
+                                $deleted_user_id = $deleted_user_row['user_id'];
+                                $deleted_user_type = $deleted_user_row['user_type'];
+                                $deleted_f_name = $deleted_user_row['f_name'];
+                                $deleted_l_name = $deleted_user_row['l_name'];
+                                $deleted_username = $deleted_user_row['username'];
+                                $deleted_phone_number = $deleted_user_row['phone_number'];
+                                $deleted_email = $deleted_user_row['email'];
                             ?>
 
                                 <tr>
-                                    <td><?php echo $user_id1 ?></td>
-                                    <td><?php echo $user_type1 ?></td>
-                                    <td><?php echo $f_name1 ?></td>
-                                    <td><?php echo $l_name1 ?></td>
-                                    <td><?php echo $username1 ?></td>
-                                    <td><?php echo $phone_number1 ?></td>
-                                    <td><?php echo $email1 ?></td>
+                                    <td><?php echo $deleted_user_id ?></td>
+                                    <td><?php echo $deleted_user_type ?></td>
+                                    <td><?php echo $deleted_f_name ?></td>
+                                    <td><?php echo $deleted_l_name ?></td>
+                                    <td><?php echo $deleted_username ?></td>
+                                    <td><?php echo $deleted_phone_number ?></td>
+                                    <td><?php echo $deleted_email ?></td>
                                     <td>
-                                        <a href="user-edit.php?userID=<?php echo $user_id1 ?>">
+                                        <a href="user-edit.php?userID=<?php echo $deleted_user_id ?>">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="user-delete.php?userID=<?php echo $user_id1 ?>">
+                                        <a href="user-delete.php?userID=<?php echo $deleted_user_id ?>">
                                             <i class="fas fa-trash"></i> 1
                                         </a>
                                     </td>
