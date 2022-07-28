@@ -58,3 +58,7 @@ alter table `case_file`
 
 alter table `user`
   add `is_deleted` int not null default 0;
+
+alter table `case_file`
+  add `description` mediumtext not null,
+  modify `file` mediumblob not null;
