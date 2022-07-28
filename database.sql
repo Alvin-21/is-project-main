@@ -50,10 +50,11 @@ create table `case_file` (
   foreign key (`user_id`) references user(`user_id`)
 ) ENGINE=InnoDB;
 
-alter table `user` (
-  add constraint `uc_user` unique (`username`, `email`)
-);
+alter table `user`
+  add constraint `uc_user` unique (`username`, `email`);
 
-alter table `case_file` (
-  add constraint `uc_case_file` unique (`case_number`)
-);
+alter table `case_file`
+  add constraint `uc_case_file` unique (`case_number`);
+
+alter table `user`
+  add `is_deleted` int not null default 0;
