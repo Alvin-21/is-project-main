@@ -222,7 +222,65 @@ if (!isset($_SESSION['is_logged_in'])) {
                 $result = mysqli_query($db, $query);
 
                 ?>
-                <h1 class="text-center">USER TABLE</h1>
+                <h1 id="tog" class="text-center">USER TABLE</h1>
+                <a href="register.php" class="text-white btn btn-primary btn-custom rounded px-3 ml-4 mb-3">
+                    <i class="fas fa-user-plus"></i> Add user
+                </a>
+                <button id="showel" class="btn btn-danger rounded px-3 ml-4 mb-3">
+                    <i class="fas fa-user-minus"></i> View deleted users
+                </button>
+                <div class="table-responsive px-4">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">User ID</th>
+                                <th scope="col">User Type</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Phone Number</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $user_id = $row['user_id'];
+                                $user_type = $row['user_type'];
+                                $f_name = $row['f_name'];
+                                $l_name = $row['l_name'];
+                                $username = $row['username'];
+                                $phone_number = $row['phone_number'];
+                                $email = $row['email'];
+                            ?>
+
+                                <tr>
+                                    <td><?php echo $user_id ?></td>
+                                    <td><?php echo $user_type ?></td>
+                                    <td><?php echo $f_name ?></td>
+                                    <td><?php echo $l_name ?></td>
+                                    <td><?php echo $username ?></td>
+                                    <td><?php echo $phone_number ?></td>
+                                    <td><?php echo $email ?></td>
+                                    <td>
+                                        <a href="user-edit.php?userID=<?php echo $user_id ?>">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="user-delete.php?userID=<?php echo $user_id ?>">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
                 <div class="table-responsive px-4">
                     <table class="table">
                         <thead>
@@ -305,6 +363,9 @@ if (!isset($_SESSION['is_logged_in'])) {
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
+
+    <!-- Main JS-->
+    <script src="js/script.js"></script>
 
 </body>
 

@@ -9,4 +9,8 @@ $(document).ready(function () {
         occ.appendTo("#temp_occupation");
         occ = null;
     });
+
+    $("#showel").click(function () {
+        $("#tog").toggle();
+    });
 });
