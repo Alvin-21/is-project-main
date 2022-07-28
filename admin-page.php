@@ -218,7 +218,7 @@ if (!isset($_SESSION['is_logged_in'])) {
                 <?php
 
                 require_once("connection.php");
-                $query = "select * from user";
+                $query = "select * from user where is_deleted = 0";
                 $result = mysqli_query($db, $query);
 
                 ?>
