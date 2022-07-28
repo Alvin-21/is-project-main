@@ -265,7 +265,7 @@ if (!isset($_SESSION['is_logged_in'])) {
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="#">
+                                        <a href="user-delete.php?userID=<?php echo $user_id ?>">
                                             <i class="fas fa-trash"></i>
                                         </a>
                                     </td>
