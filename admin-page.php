@@ -220,17 +220,22 @@ if (!isset($_SESSION['is_logged_in'])) {
                 require_once("connection.php");
                 $query = "select * from user where is_deleted = 0";
                 $result = mysqli_query($db, $query);
+                $query1 = "select * from user where is_deleted = 0";
+                $result1 = mysqli_query($db, $query1);
 
                 ?>
-                <h1 id="tog" class="text-center">USER TABLE</h1>
+                <h1 class="text-center">USER TABLE</h1>
                 <a href="register.php" class="text-white btn btn-primary btn-custom rounded px-3 ml-4 mb-3">
                     <i class="fas fa-user-plus"></i> Add user
                 </a>
-                <button id="showel" class="btn btn-danger rounded px-3 ml-4 mb-3">
+                <button id="show-deleted" class="btn btn-danger rounded px-3 ml-4 mb-3">
                     <i class="fas fa-user-minus"></i> View deleted users
                 </button>
+                <button id="show-current" class="btn btn-primary rounded px-3 ml-4 mb-3">
+                    <i class="fas fa-user"></i> View current users
+                </button>
                 <div class="table-responsive px-4">
-                    <table class="table">
+                    <table id="current-users" class="table">
                         <thead>
                             <tr>
                                 <th scope="col">User ID</th>
@@ -282,7 +287,7 @@ if (!isset($_SESSION['is_logged_in'])) {
                     </table>
                 </div>
                 <div class="table-responsive px-4">
-                    <table class="table">
+                    <table id="deleted-users" class="table" style="display: none;">
                         <thead>
                             <tr>
                                 <th scope="col">User ID</th>
@@ -299,32 +304,32 @@ if (!isset($_SESSION['is_logged_in'])) {
                         <tbody>
                             <?php
 
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $user_id = $row['user_id'];
-                                $user_type = $row['user_type'];
-                                $f_name = $row['f_name'];
-                                $l_name = $row['l_name'];
-                                $username = $row['username'];
-                                $phone_number = $row['phone_number'];
-                                $email = $row['email'];
+                            while ($row1 = mysqli_fetch_assoc($result1)) {
+                                $user_id1 = $row1['user_id'];
+                                $user_type1 = $row1['user_type'];
+                                $f_name1 = $row1['f_name'];
+                                $l_name1 = $row1['l_name'];
+                                $username1 = $row1['username'];
+                                $phone_number1 = $row1['phone_number'];
+                                $email1 = $row1['email'];
                             ?>
 
                                 <tr>
-                                    <td><?php echo $user_id ?></td>
-                                    <td><?php echo $user_type ?></td>
-                                    <td><?php echo $f_name ?></td>
-                                    <td><?php echo $l_name ?></td>
-                                    <td><?php echo $username ?></td>
-                                    <td><?php echo $phone_number ?></td>
-                                    <td><?php echo $email ?></td>
+                                    <td><?php echo $user_id1 ?></td>
+                                    <td><?php echo $user_type1 ?></td>
+                                    <td><?php echo $f_name1 ?></td>
+                                    <td><?php echo $l_name1 ?></td>
+                                    <td><?php echo $username1 ?></td>
+                                    <td><?php echo $phone_number1 ?></td>
+                                    <td><?php echo $email1 ?></td>
                                     <td>
-                                        <a href="user-edit.php?userID=<?php echo $user_id ?>">
+                                        <a href="user-edit.php?userID=<?php echo $user_id1 ?>">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="user-delete.php?userID=<?php echo $user_id ?>">
-                                            <i class="fas fa-trash"></i>
+                                        <a href="user-delete.php?userID=<?php echo $user_id1 ?>">
+                                            <i class="fas fa-trash"></i> 1
                                         </a>
                                     </td>
                                 </tr>

@@ -10,7 +10,13 @@ $(document).ready(function () {
         occ = null;
     });
 
-    $("#showel").click(function () {
-        $("#tog").toggle();
+    $("#show-deleted").click(function () {
+        $("#current-users").hide();
+        $("#deleted-users").show();
+    });
+
+    $("#show-current").click(function () {
+        $("#deleted-users").hide();
+        $("#current-users").show();
     });
 });
