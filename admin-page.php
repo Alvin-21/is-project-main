@@ -55,7 +55,7 @@ if (!isset($_SESSION['is_logged_in'])) {
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="font-size">
+                                <a href="#user-table" class="font-size">
                                     <i class="fas fa-users"></i>
                                     <span class="bot-line"></span>User Table</a>
                             </li>
@@ -125,7 +125,7 @@ if (!isset($_SESSION['is_logged_in'])) {
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="#user-table">
                                 <i class="fas fa-users"></i>User Table</a>
                         </li>
                         <li>
@@ -224,7 +224,7 @@ if (!isset($_SESSION['is_logged_in'])) {
                 $deleted_users_result = mysqli_query($db, $deleted_users);
 
                 ?>
-                <h1 class="text-center">USER TABLE</h1>
+                <h1 id="user-table" class="text-center">USER TABLE</h1>
                 <a href="register.php" class="text-white btn btn-primary btn-custom rounded px-3 ml-4 mb-3">
                     <i class="fas fa-user-plus"></i> Add user
                 </a>
