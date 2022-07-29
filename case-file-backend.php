@@ -1,5 +1,7 @@
 <?php
 
+    include("connection.php");
+
     if (isset($_POST['upload_file'])) {
     // receive all input values from the form
     $file_name = mysqli_real_escape_string($db,$_POST['file_name']);
@@ -13,6 +15,20 @@
     if (empty($case_number)) { array_push($errors, "Case number is required"); }
     if (empty($description)) { array_push($errors, "Description is required"); }
     if (empty($case_file)) { array_push($errors, "Case file is required"); }
+
+    $file_check_query = "SELECT * FROM case_file WHERE username='$username' OR email='$email' LIMIT 1";
+    $result = mysqli_query($db, $user_check_query);
+    $user = mysqli_fetch_assoc($result);
+    
+    if ($case_number) { // if user exists
+        if ($user['username'] === $username) {
+          array_push($errors, "Username already exists");
+        }
+    
+        if ($user['email'] === $email) {
+          array_push($errors, "Email already exists");
+        }
+      }
 
     // Finally, register user if there are no errors in the form
     if (count($errors) == 0) {
