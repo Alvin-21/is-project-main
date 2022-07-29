@@ -60,7 +60,7 @@ if (!isset($_SESSION['is_logged_in'])) {
                                     <span class="bot-line"></span>User Table</a>
                             </li>
                             <li>
-                                <a href="table.html" class="font-size">
+                                <a href="#" class="font-size">
                                     <i class="fa fa-file"></i>
                                     <span class="bot-line"></span>Case Files</a>
                             </li>
