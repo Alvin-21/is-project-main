@@ -27,7 +27,7 @@ if (!isset($_SESSION['is_logged_in'])) {
 							<h2 class="heading-section">Case Upload Form</h2>
 						</div>
 						<div class="login-wrap py-0">
-							<form method="post" action="register.php">
+							<form method="post" action="case-file-backend.php">
 								<?php include('errors.php'); ?>
 								<div class="form-group mb-3">
 									<label class="form-label">File Name</label>
