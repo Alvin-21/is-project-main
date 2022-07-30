@@ -220,7 +220,7 @@ if (!isset($_SESSION['is_logged_in'])) {
                 <?php
 
                 require_once("connection.php");
-                $query = "select * from case_file";
+                $query = "select * from case_file where is_deleted = 0";
                 $result = mysqli_query($db, $query);
 
                 ?>
@@ -248,7 +248,7 @@ if (!isset($_SESSION['is_logged_in'])) {
                                         <a href="case-file-edit.php?fileID=<?php echo $file_id ?>">
                                             <i class="fas fa-edit"></i>
                                         </a> 
-                                        <a href="user-delete.php?fileID=<?php echo $file_id ?>">
+                                        <a href="case-file-delete.php?fileID=<?php echo $file_id ?>">
                                             <i class="fas fa-trash text-danger"></i>
                                         </a>
                                     </h5>
