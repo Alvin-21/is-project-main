@@ -39,7 +39,7 @@
 
             // Redirects user to the appropriate page after uploading file
             if ($is_inserted) {
-                header('Location: admin-page.php');
+                header('Location: index.php');
             } else {
                 header('Location: case-file.php');
             }

@@ -237,23 +237,28 @@ if (!isset($_SESSION['is_logged_in'])) {
                         $user_query = "select * from user where user_id = $user_id";
                         $user_query_result = mysqli_query($db, $user_query);
                         $user = mysqli_fetch_assoc($user_query_result);
-                    
+
                     ?>
                     <div class="col-4">
                         <div class="card-deck mt-4">
-                            <div class="card" >
+                            <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">
                                         <?php echo $file_name ?>
                                         <a href="case-file-edit.php?fileID=<?php echo $file_id ?>">
                                             <i class="fas fa-edit"></i>
-                                        </a> 
+                                        </a>
                                         <a href="case-file-delete.php?fileID=<?php echo $file_id ?>">
                                             <i class="fas fa-trash text-danger"></i>
                                         </a>
                                     </h5>
                                     <p class="card-text">Case Number: <?php echo $case_number ?></p>
                                     <p class="card-text"><?php echo $description ?></p>
+                                    <p>
+                                        <a href="download.php?id=<?php echo $file_id ?>" target="_blank">
+                                            Download file
+                                        </a>
+                                    </p>
                                 </div>
                                 <div class="card-footer">
                                     <small class="text-muted">Uploaded by: <?php echo $user['f_name'] ?> <?php echo $user['l_name'] ?></small>
