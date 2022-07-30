@@ -267,25 +267,25 @@ if (!isset($_SESSION['is_logged_in'])) {
                                 $email = $row['email'];
                             ?>
 
-                                <tr>
-                                    <td><?php echo $user_id ?></td>
-                                    <td><?php echo $user_type ?></td>
-                                    <td><?php echo $f_name ?></td>
-                                    <td><?php echo $l_name ?></td>
-                                    <td><?php echo $username ?></td>
-                                    <td><?php echo $phone_number ?></td>
-                                    <td><?php echo $email ?></td>
-                                    <td>
-                                        <a href="user-edit.php?userID=<?php echo $user_id ?>">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a href="user-delete.php?userID=<?php echo $user_id ?>">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td><?php echo $user_id ?></td>
+                                <td><?php echo $user_type ?></td>
+                                <td><?php echo $f_name ?></td>
+                                <td><?php echo $l_name ?></td>
+                                <td><?php echo $username ?></td>
+                                <td><?php echo $phone_number ?></td>
+                                <td><?php echo $email ?></td>
+                                <td>
+                                    <a href="user-edit.php?userID=<?php echo $user_id ?>">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="user-delete.php?userID=<?php echo $user_id ?>">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
 
                             <?php } ?>
                         </tbody>

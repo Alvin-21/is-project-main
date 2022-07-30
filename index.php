@@ -220,7 +220,7 @@ if (!isset($_SESSION['is_logged_in'])) {
                 <?php
 
                 require_once("connection.php");
-                $query = "select * from case";
+                $query = "select * from case_file";
                 $result = mysqli_query($db, $query);
 
                 ?>
@@ -229,55 +229,30 @@ if (!isset($_SESSION['is_logged_in'])) {
 
                     while ($row = mysqli_fetch_assoc($result)) {
                         $user_id = $row['user_id'];
-                        $user_type = $row['user_type'];
-                        $f_name = $row['f_name'];
-                        $l_name = $row['l_name'];
-                        $username = $row['username'];
-                        $phone_number = $row['phone_number'];
-                        $email = $row['email'];
-                    }
+                        $case_number = $row['case_number'];
+                        $file_name = $row['file_name'];
+                        $description = $row['description'];
+
+                        $user_query = "select * from user where user_id = $user_id";
+                        $user_query_result = mysqli_query($db, $user_query);
+                        $user = mysqli_fetch_assoc($user_query_result);
+                    
                     ?>
                     <div class="col-4">
-                        
-                    </div>
-                    <div class="card-deck">
-                        <div class="card" style="max-width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Last updated 3 mins ago</small>
-                            </div>
-                        </div>
-                        <div class="card" style="max-width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Last updated 3 mins ago</small>
-                            </div>
-                        </div>
-                        <div class="card" style="max-width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Last updated 3 mins ago</small>
-                            </div>
-                        </div>
-                        <div class="card" style="max-width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Last updated 3 mins ago</small>
+                        <div class="card-deck mt-4">
+                            <div class="card" >
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $file_name ?></h5>
+                                    <p class="card-text">Case Number: <?php echo $case_number ?></p>
+                                    <p class="card-text"><?php echo $description ?></p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Uploaded by: <?php echo $user['f_name'] ?> <?php echo $user['l_name'] ?></small>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <?php } ?>
                 </div>
             </section>
 
