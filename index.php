@@ -1,9 +1,9 @@
-<?php 
-  session_start(); 
+<?php
+session_start();
 
-  if (!isset($_SESSION['is_logged_in'])) {
-  	header('location: login.php');
-  }
+if (!isset($_SESSION['is_logged_in'])) {
+    header('location: login.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -30,9 +30,8 @@
 
     <!-- Main CSS-->
     <style>
-		<?php include "css/theme.css" ?>
-        <?php include "css/style.css" ?>
-	</style>
+        <?php include "css/theme.css" ?><?php include "css/style.css" ?>
+    </style>
 
 </head>
 
@@ -53,17 +52,7 @@
                                 <a href="#" class="font-size">
                                     <i class="fas fa-tachometer-alt"></i>Dashboard
                                     <span class="bot-line"></span>
-                                </a> 
-                            </li>
-                            <li>
-                                <a href="#" class="font-size">
-                                    <i class="fas fa-users"></i>
-                                    <span class="bot-line"></span>User Table</a>
-                            </li>
-                            <li>
-                                <a href="table.html" class="font-size">
-                                    <i class="fa fa-file"></i>
-                                    <span class="bot-line"></span>Case Files</a>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -78,7 +67,7 @@
                                         <figure class="image">
                                             <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                         </figure>
-                                        <div class="content" >
+                                        <div class="content">
                                             <h5 class="name"><?php echo $_SESSION['user_details']['f_name']; ?> <?php echo $_SESSION['user_details']['l_name']; ?></h5>
                                             <span class="email"><?php echo $_SESSION['user_details']['email']; ?></span>
                                         </div>
@@ -125,14 +114,6 @@
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-users"></i>User Table</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-file"></i>Case Files</a>
-                        </li>
                     </ul>
                 </div>
             </nav>
@@ -166,7 +147,7 @@
                                     <a href="logout.php">
                                         <i class="zmdi zmdi-power"></i>Logout</a>
                                 </div>
-                            </div> 
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -213,9 +194,32 @@
                 </div>
             </section>
             <!-- END WELCOME-->
-            <section>
-                <h1 class="text-center">USER TABLE</h1>
+
+            <!-- SEARCH BOX -->
+            <section class="ftco-section mt-4">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="au-breadcrumb-content">
+                                <form method="post" action="login.php" class="au-form-icon--sm">
+                                    <div class="form-group mb-3">
+                                        <input class="au-input--w300 au-input--style2" type="text" placeholder="Search for case file">
+                                        <button class="au-btn--submit2" type="submit">
+                                            <i class="zmdi zmdi-search"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
+
+            <!-- CARDS FOR CASE FILES -->
+            <section>
+                <h1>case files</h1>
+            </section>
+
             <!-- COPYRIGHT-->
             <section class="p-t-60 p-b-20">
                 <div class="container">
@@ -239,7 +243,7 @@
     <!-- Bootstrap JS-->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    
+
     <!-- Vendor JS       -->
     <script src="vendor/animsition/animsition.min.js"></script>
 
