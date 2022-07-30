@@ -2,7 +2,7 @@
 
     session_start();
 
-    // initializing variables
+
     $errors = array();
 
     include("connection.php");
@@ -14,7 +14,8 @@
         $description = mysqli_real_escape_string($db,$_POST['description']);
         $case_file = mysqli_real_escape_string($db,$_POST['case_file']);
 
-        $user_id = $_SESSION['user_details']['user_id'];
+        // check the database to make sure 
+        // a case file does not already exist with the same case number
         $file_check_query = "SELECT * FROM `case_file`";
         $result = mysqli_query($db, $file_check_query);
 
@@ -26,7 +27,9 @@
             }
         }
 
-        // Finally, register user if there are no errors in the form
+        // Finally, upload file if there are no errors in the form
+         $user_id = $_SESSION['user_details']['user_id'];
+
         if (count($errors) == 0) {
 
             $query = "INSERT INTO case_file (file_id, user_id, case_number, file_name, file, description) 
@@ -34,7 +37,7 @@
 
             $is_inserted = mysqli_query($db, $query);
 
-            // Redirects user to the appropriate page after registration
+            // Redirects user to the appropriate page after uploading file
             if ($is_inserted) {
                 header('Location: admin-page.php');
             } else {
