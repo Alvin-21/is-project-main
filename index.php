@@ -228,6 +228,7 @@ if (!isset($_SESSION['is_logged_in'])) {
                     <?php
 
                     while ($row = mysqli_fetch_assoc($result)) {
+                        $file_id = $row['file_id'];
                         $user_id = $row['user_id'];
                         $case_number = $row['case_number'];
                         $file_name = $row['file_name'];
@@ -242,7 +243,15 @@ if (!isset($_SESSION['is_logged_in'])) {
                         <div class="card-deck mt-4">
                             <div class="card" >
                                 <div class="card-body">
-                                    <h5 class="card-title"><?php echo $file_name ?></h5>
+                                    <h5 class="card-title">
+                                        <?php echo $file_name ?>
+                                        <a href="case-file-edit.php?fileID=<?php echo $file_id ?>">
+                                            <i class="fas fa-edit"></i>
+                                        </a> 
+                                        <a href="user-delete.php?fileID=<?php echo $file_id ?>">
+                                            <i class="fas fa-trash text-danger"></i>
+                                        </a>
+                                    </h5>
                                     <p class="card-text">Case Number: <?php echo $case_number ?></p>
                                     <p class="card-text"><?php echo $description ?></p>
                                 </div>
