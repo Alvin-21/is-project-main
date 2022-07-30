@@ -216,8 +216,69 @@ if (!isset($_SESSION['is_logged_in'])) {
             </section>
 
             <!-- CARDS FOR CASE FILES -->
-            <section>
-                <h1>case files</h1>
+            <section class="mx-3">
+                <?php
+
+                require_once("connection.php");
+                $query = "select * from case";
+                $result = mysqli_query($db, $query);
+
+                ?>
+                <div class="row">
+                    <?php
+
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $user_id = $row['user_id'];
+                        $user_type = $row['user_type'];
+                        $f_name = $row['f_name'];
+                        $l_name = $row['l_name'];
+                        $username = $row['username'];
+                        $phone_number = $row['phone_number'];
+                        $email = $row['email'];
+                    }
+                    ?>
+                    <div class="col-4">
+                        
+                    </div>
+                    <div class="card-deck">
+                        <div class="card" style="max-width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                        <div class="card" style="max-width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                        <div class="card" style="max-width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                        <div class="card" style="max-width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <!-- COPYRIGHT-->
