@@ -1,9 +1,33 @@
 <?php
+
 session_start();
 
 if (!isset($_SESSION['is_logged_in'])) {
     header('location: login.php');
 }
+
+require_once("connection.php");
+
+$search_term = explode(" ", $_GET['query']);
+
+$file_name = "";
+$description = "";
+$case_number = "";
+
+foreach($search_term as $s) {
+    $file_name .= "`file_name` LIKE '%".mysqli_real_escape_string($db, $s)."%' OR ";
+    $description .= "`description` LIKE '%".mysqli_real_escape_string($db, $s)."%' OR ";
+    $case_number .= "`case_number` LIKE '%".mysqli_real_escape_string($db, $s)."%' OR ";
+}
+
+$file_name = substr($file_name, 0, -4);
+$description = substr($description, 0, -4);
+$case_number = substr($case_number, 0, -4);
+
+$query = "SELECT * FROM `case_file` WHERE ($file_name) OR ($description) OR ($case_number)";
+
+$result = mysqli_query($db, $query);
+
 ?>
 
 <!DOCTYPE html>
@@ -157,134 +181,62 @@ if (!isset($_SESSION['is_logged_in'])) {
 
         <!-- PAGE CONTENT-->
         <div class="page-content--bgf7">
-            <!-- BREADCRUMB-->
-            <section class="au-breadcrumb2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="au-breadcrumb-content">
-                                <div class="au-breadcrumb-left">
-                                    <span class="au-breadcrumb-span">You are here:</span>
-                                    <ul class="list-unstyled list-inline au-breadcrumb__list">
-                                        <li class="list-inline-item active">CMS</li>
-                                        <li class="list-inline-item seprate">
-                                            <span>/</span>
-                                        </li>
-                                        <li class="list-inline-item">Home</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <section class="mx-3 pb-3">
+                <div class="pt-3">
+                    <h2 class="text-center">Search Results</h2>
                 </div>
-            </section>
-            <!-- END BREADCRUMB-->
-
-            <!-- WELCOME-->
-            <section class="welcome p-t-10">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1 class="title-4">Welcome
-                                <span><?php echo $_SESSION['user_details']['f_name']; ?>!</span>
-                            </h1>
-                            <hr class="line-seprate">
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- END WELCOME-->
-
-            <!-- SEARCH BOX -->
-            <section class="ftco-section mt-4">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-md-6 col-lg-4">
-                            <div class="au-breadcrumb-content">
-                                <form method="get" action="search.php" class="au-form-icon--sm">
-                                    <div class="form-group mb-3">
-                                        <input class="au-input--w300 au-input--style2" type="text" placeholder="Search for case file" name="query">
-                                        <button class="au-btn--submit2" type="submit">
-                                            <i class="zmdi zmdi-search"></i>
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CARDS FOR CASE FILES -->
-            <section class="mx-3">
-                <?php
-
-                require_once("connection.php");
-                $query = "select * from case_file where is_deleted = 0";
-                $result = mysqli_query($db, $query);
-
-                ?>
                 <div class="row">
                     <?php
 
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $file_id = $row['file_id'];
-                        $user_id = $row['user_id'];
-                        $case_number = $row['case_number'];
-                        $file_name = $row['file_name'];
-                        $description = $row['description'];
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $file_id = $row['file_id'];
+                            $user_id = $row['user_id'];
+                            $case_number = $row['case_number'];
+                            $file_name = $row['file_name'];
+                            $description = $row['description'];
 
-                        $user_query = "select * from user where user_id = $user_id";
-                        $user_query_result = mysqli_query($db, $user_query);
-                        $user = mysqli_fetch_assoc($user_query_result);
+                            $user_query = "select * from user where user_id = $user_id";
+                            $user_query_result = mysqli_query($db, $user_query);
+                            $user = mysqli_fetch_assoc($user_query_result);
 
                     ?>
-                    <div class="col-4">
-                        <div class="card-deck mt-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <?php echo $file_name ?>
-                                        <a href="case-file-edit.php?fileID=<?php echo $file_id ?>">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        <a href="case-file-delete.php?fileID=<?php echo $file_id ?>">
-                                            <i class="fas fa-trash text-danger"></i>
-                                        </a>
-                                    </h5>
-                                    <p class="card-text">Case Number: <?php echo $case_number ?></p>
-                                    <p class="card-text"><?php echo $description ?></p>
-                                    <p>
-                                        <a href="download.php?id=<?php echo $file_id ?>" target="_blank">
-                                            Download file
-                                        </a>
-                                    </p>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-muted">Uploaded by: <?php echo $user['f_name'] ?> <?php echo $user['l_name'] ?></small>
+                            <div class="col-4">
+                                <div class="card-deck mt-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <?php echo $file_name ?>
+                                                <a href="case-file-edit.php?fileID=<?php echo $file_id ?>">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a href="case-file-delete.php?fileID=<?php echo $file_id ?>">
+                                                    <i class="fas fa-trash text-danger"></i>
+                                                </a>
+                                            </h5>
+                                            <p class="card-text">Case Number: <?php echo $case_number ?></p>
+                                            <p class="card-text"><?php echo $description ?></p>
+                                            <p>
+                                                <a href="download.php?id=<?php echo $file_id ?>" target="_blank">
+                                                    Download file
+                                                </a>
+                                            </p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-muted">Uploaded by: <?php echo $user['f_name'] ?> <?php echo $user['l_name'] ?></small>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <div>
+                            <p class="ml-4 mt-4"><strong>No results found.</strong></p>
                         </div>
-                    </div>
                     <?php } ?>
                 </div>
             </section>
-
-            <!-- COPYRIGHT-->
-            <section class="p-t-60 p-b-20">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="copyright">
-                                <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- END COPYRIGHT-->
         </div>
-
     </div>
 
     <!-- Jquery JS-->
