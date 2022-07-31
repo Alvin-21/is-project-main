@@ -84,12 +84,12 @@ $result = mysqli_query($db, $query);
                         <div class="account-wrap">
                             <div class="account-item account-item--style2 clearfix js-item-menu">
                                 <div class="image">
-                                    <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                    <img src="images/user.png" alt="John Doe" />
                                 </div>
                                 <div class="account-dropdown js-dropdown">
                                     <div class="info clearfix" style="cursor: default;">
                                         <figure class="image">
-                                            <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                            <img src="images/user.png" alt="John Doe" />
                                         </figure>
                                         <div class="content">
                                             <h5 class="name"><?php echo $_SESSION['user_details']['f_name']; ?> <?php echo $_SESSION['user_details']['l_name']; ?></h5>
@@ -147,7 +147,7 @@ $result = mysqli_query($db, $query);
                 <div class="account-wrap">
                     <div class="account-item account-item--style2 clearfix js-item-menu">
                         <div class="image">
-                            <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                            <img src="images/user.png" alt="John Doe" />
                         </div>
                         <div class="content">
                             <a class="js-acc-btn" href="#"><?php echo $_SESSION['user_details']['f_name']; ?> <?php echo $_SESSION['user_details']['l_name']; ?></a>
@@ -155,7 +155,7 @@ $result = mysqli_query($db, $query);
                         <div class="account-dropdown js-dropdown">
                             <div class="info clearfix" style="cursor: default;">
                                 <figure class="image">
-                                    <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                    <img src="images/user.png" alt="John Doe" />
                                 </figure>
                                 <div class="content">
                                     <h5 class="name"><?php echo $_SESSION['user_details']['f_name']; ?> <?php echo $_SESSION['user_details']['l_name']; ?></h5>
