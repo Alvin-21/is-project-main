@@ -74,7 +74,7 @@ if (!isset($_SESSION['is_logged_in'])) {
                                     </div>
                                     <div class="account-dropdown__body">
                                         <div class="account-dropdown__item">
-                                            <a href="#">
+                                            <a href="account.php">
                                                 <i class="zmdi zmdi-account"></i>Account</a>
                                         </div>
                                         <div class="account-dropdown__item">
@@ -140,7 +140,7 @@ if (!isset($_SESSION['is_logged_in'])) {
                             </div>
                             <div class="account-dropdown__body">
                                 <div class="account-dropdown__item">
-                                    <a href="#">
+                                    <a href="account.php">
                                         <i class="zmdi zmdi-account"></i>Account</a>
                                 </div>
                                 <div class="account-dropdown__item">
@@ -215,6 +215,14 @@ if (!isset($_SESSION['is_logged_in'])) {
                 </div>
             </section>
 
+            <section>
+                <div class="pt-3">
+                    <a href="case-file.php" class="text-white btn btn-primary btn-custom rounded px-3 ml-4 mb-3">
+                        <i class="fas fa-file-upload"></i> Upload case file
+                    </a>
+                </div>
+            </section>
+
             <!-- CARDS FOR CASE FILES -->
             <section class="mx-3">
                 <?php
@@ -239,33 +247,33 @@ if (!isset($_SESSION['is_logged_in'])) {
                         $user = mysqli_fetch_assoc($user_query_result);
 
                     ?>
-                    <div class="col-4">
-                        <div class="card-deck mt-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <?php echo $file_name ?>
-                                        <a href="case-file-edit.php?fileID=<?php echo $file_id ?>">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        <a href="case-file-delete.php?fileID=<?php echo $file_id ?>">
-                                            <i class="fas fa-trash text-danger"></i>
-                                        </a>
-                                    </h5>
-                                    <p class="card-text">Case Number: <?php echo $case_number ?></p>
-                                    <p class="card-text"><?php echo $description ?></p>
-                                    <p>
-                                        <a href="download.php?id=<?php echo $file_id ?>" target="_blank">
-                                            Download file
-                                        </a>
-                                    </p>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-muted">Uploaded by: <?php echo $user['f_name'] ?> <?php echo $user['l_name'] ?></small>
+                        <div class="col-4">
+                            <div class="card-deck mt-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <?php echo $file_name ?>
+                                            <a href="case-file-edit.php?fileID=<?php echo $file_id ?>">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a href="case-file-delete.php?fileID=<?php echo $file_id ?>">
+                                                <i class="fas fa-trash text-danger"></i>
+                                            </a>
+                                        </h5>
+                                        <p class="card-text">Case Number: <?php echo $case_number ?></p>
+                                        <p class="card-text"><?php echo $description ?></p>
+                                        <p>
+                                            <a href="download.php?id=<?php echo $file_id ?>" target="_blank">
+                                                Download file
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">Uploaded by: <?php echo $user['f_name'] ?> <?php echo $user['l_name'] ?></small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     <?php } ?>
                 </div>
             </section>

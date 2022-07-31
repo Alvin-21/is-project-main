@@ -36,7 +36,15 @@
             $result = mysqli_query($db, $query);
 
             if($result){
-                header("location: account.php");
+                switch ($user_type) {
+                    case 'admin':
+                        header("location: admin-page.php");
+                        break;
+                    
+                    case 'employee':
+                        header("location: account.php");
+                        break;
+                }
             }
         } else {
             $_SESSION['errs'] = $errors;

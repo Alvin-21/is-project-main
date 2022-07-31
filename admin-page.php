@@ -84,7 +84,7 @@ if (!isset($_SESSION['is_logged_in'])) {
                                     </div>
                                     <div class="account-dropdown__body">
                                         <div class="account-dropdown__item">
-                                            <a href="#">
+                                            <a href="account.php">
                                                 <i class="zmdi zmdi-account"></i>Account</a>
                                         </div>
                                         <div class="account-dropdown__item">
@@ -158,7 +158,7 @@ if (!isset($_SESSION['is_logged_in'])) {
                             </div>
                             <div class="account-dropdown__body">
                                 <div class="account-dropdown__item">
-                                    <a href="#">
+                                    <a href="account.php">
                                         <i class="zmdi zmdi-account"></i>Account</a>
                                 </div>
                                 <div class="account-dropdown__item">
@@ -224,16 +224,18 @@ if (!isset($_SESSION['is_logged_in'])) {
                 $deleted_users_result = mysqli_query($db, $deleted_users);
 
                 ?>
-                <h1 id="user-table" class="text-center">USER TABLE</h1>
-                <a href="register.php" class="text-white btn btn-primary btn-custom rounded px-3 ml-4 mb-3">
-                    <i class="fas fa-user-plus"></i> Add user
-                </a>
-                <button id="show-deleted" class="btn btn-danger rounded px-3 ml-4 mb-3">
-                    <i class="fas fa-user-minus"></i> View deleted users
-                </button>
-                <button id="show-current" class="btn btn-primary rounded px-3 ml-4 mb-3">
-                    <i class="fas fa-user"></i> View current users
-                </button>
+                <div class="pt-3">
+                    <a href="register.php" class="text-white btn btn-primary btn-custom rounded px-3 ml-4 mb-3">
+                        <i class="fas fa-user-plus"></i> Add user
+                    </a>
+                    <button id="show-deleted" class="btn btn-danger rounded px-3 ml-4 mb-3">
+                        <i class="fas fa-user-minus"></i> View deleted users
+                    </button>
+                    <button id="show-current" class="btn btn-primary rounded px-3 ml-4 mb-3">
+                        <i class="fas fa-user"></i> View current users
+                    </button>
+                </div>
+
 
                 <!-- CURRENT USER TABLE -->
                 <div class="table-responsive px-4">
@@ -267,25 +269,25 @@ if (!isset($_SESSION['is_logged_in'])) {
                                 $email = $row['email'];
                             ?>
 
-                            <tr>
-                                <td><?php echo $user_id ?></td>
-                                <td><?php echo $user_type ?></td>
-                                <td><?php echo $f_name ?></td>
-                                <td><?php echo $l_name ?></td>
-                                <td><?php echo $username ?></td>
-                                <td><?php echo $phone_number ?></td>
-                                <td><?php echo $email ?></td>
-                                <td>
-                                    <a href="user-edit.php?userID=<?php echo $user_id ?>">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="user-delete.php?userID=<?php echo $user_id ?>">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td><?php echo $user_id ?></td>
+                                    <td><?php echo $user_type ?></td>
+                                    <td><?php echo $f_name ?></td>
+                                    <td><?php echo $l_name ?></td>
+                                    <td><?php echo $username ?></td>
+                                    <td><?php echo $phone_number ?></td>
+                                    <td><?php echo $email ?></td>
+                                    <td>
+                                        <a href="user-edit.php?userID=<?php echo $user_id ?>">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="user-delete.php?userID=<?php echo $user_id ?>">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
 
                             <?php } ?>
                         </tbody>
