@@ -73,7 +73,7 @@ $result = mysqli_query($db, $query);
                     <div class="header__navbar">
                         <ul class="list-unstyled">
                             <li>
-                                <a href="#" class="font-size">
+                                <a href="index.php" class="font-size">
                                     <i class="fas fa-tachometer-alt"></i>Dashboard
                                     <span class="bot-line"></span>
                                 </a>
@@ -135,7 +135,7 @@ $result = mysqli_query($db, $query);
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li>
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="index.php">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                     </ul>
