@@ -1,5 +1,7 @@
 <?php 
 
+	session_start();
+
     require_once("connection.php");
     $user_id = $_GET['userID'];
     $query = "select * from user where user_id='".$user_id."'";
@@ -37,6 +39,23 @@
 						</div>
 						<div class="login-wrap py-0">
 							<form method="post" action="update.php?userID=<?php echo $user_id; ?>" id="class="login-form">
+								<div>
+									<?php if (isset($_SESSION['errs'])) : ?>
+										<div class="error">
+											<p>
+												<?php
+
+												$errs = $_SESSION['errs'];
+												foreach($errs as $err) {
+													echo $err . "<br>";
+												}
+												
+												unset($_SESSION['errs']);
+												?>
+											</p>
+										</div>
+									<?php endif ?>
+								</div>
 								<span>Select user type:</span>
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="user_type" id="employee" value="employee" checked>
@@ -85,6 +104,14 @@
                                 <div class="form-group mb-3">
 									<label class="form-label">Email</label>
 									<input type="email" name="email" class="form-control" value="<?php echo $email ?>" required>
+								</div>
+								<div class="form-group mb-3">
+									<label class="form-label">Password</label>
+									<input type="password" name="password" class="form-control" placeholder="********" minlength="8" autocomplete="new-password" required>
+								</div>
+                                <div class="form-group mb-3">
+									<label class="form-label">Confirm password</label>
+									<input type="password" name="confirm_password" class="form-control" placeholder="********" minlength="8" autocomplete="new-password" required>
 								</div>
 								<div class="form-group mb-3" >
 									<button type="submit" name="update" class="btn form-control btn-primary rounded submit px-3 btn-custom">Update</button>

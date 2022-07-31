@@ -1,6 +1,17 @@
 <?php
 
+    session_start();
+    
     require_once("connection.php");
+
+    $errors = array();
+
+    function encryptPassword($password){
+        $salt = "!*@&#^";
+        $saltedpassword = $salt.$password.$salt;
+        $hashpassword = md5($saltedpassword);
+        return $hashpassword;
+    }
 
     if(isset($_POST['update'])){
         $user_id = $_GET['userID'];
@@ -10,13 +21,27 @@
         $phone_number = mysqli_real_escape_string($db, $_POST['phone_number']);
         $username = mysqli_real_escape_string($db, $_POST['username']);
         $email = mysqli_real_escape_string($db, $_POST['email']);
+        $password = mysqli_real_escape_string($db, $_POST['password']);
+        $confirm_password = mysqli_real_escape_string($db, $_POST['confirm_password']);
 
-        $query = "update user set user_type = '".$user_type."', f_name = '".$f_name."', l_name = '".$l_name."', phone_number = '".$phone_number."', username = '".$username."', email = '".$email."' where user_id = '".$user_id."'";
+        if ($password != $confirm_password) {
+            array_push($errors, "The two passwords do not match");
+        }
 
-        $result = mysqli_query($db, $query);
+        if (count($errors) == 0) {
+            $password = encryptPassword($password);
 
-        if($result){
-            header("location: admin-page.php");
+            $query = "update user set user_type = '".$user_type."', f_name = '".$f_name."', l_name = '".$l_name."', phone_number = '".$phone_number."', username = '".$username."', email = '".$email."', password = '".$password."' where user_id = '".$user_id."'";
+
+            $result = mysqli_query($db, $query);
+
+            if($result){
+                header("location: account.php");
+            }
+        } else {
+            $_SESSION['errs'] = $errors;
+
+            header("Location: user-edit.php?userID=$user_id");
         }
     }
 
