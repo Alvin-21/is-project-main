@@ -224,7 +224,7 @@ if (!isset($_SESSION['is_logged_in'])) {
                 $deleted_users_result = mysqli_query($db, $deleted_users);
 
                 ?>
-                <div class="pt-3">
+                <div id="user-table" class="pt-3">
                     <a href="register.php" class="text-white btn btn-primary btn-custom rounded px-3 ml-4 mb-3">
                         <i class="fas fa-user-plus"></i> Add user
                     </a>
