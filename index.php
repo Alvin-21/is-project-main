@@ -264,7 +264,8 @@ if (!isset($_SESSION['is_logged_in'])) {
                                         <p class="card-text"><?php echo $description ?></p>
                                         <p>
                                             <a href="download.php?id=<?php echo $file_id ?>" target="_blank">
-                                                Download file
+                                                <i class="fas fa-file"></i>
+                                                View file
                                             </a>
                                         </p>
                                     </div>
