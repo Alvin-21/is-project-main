@@ -14,10 +14,10 @@ $file_name = "";
 $description = "";
 $case_number = "";
 
-foreach($search_term as $s) {
-    $file_name .= "`file_name` LIKE '%".mysqli_real_escape_string($db, $s)."%' OR ";
-    $description .= "`description` LIKE '%".mysqli_real_escape_string($db, $s)."%' OR ";
-    $case_number .= "`case_number` LIKE '%".mysqli_real_escape_string($db, $s)."%' OR ";
+foreach ($search_term as $s) {
+    $file_name .= "`file_name` LIKE '%" . mysqli_real_escape_string($db, $s) . "%' OR ";
+    $description .= "`description` LIKE '%" . mysqli_real_escape_string($db, $s) . "%' OR ";
+    $case_number .= "`case_number` LIKE '%" . mysqli_real_escape_string($db, $s) . "%' OR ";
 }
 
 $file_name = substr($file_name, 0, -4);
@@ -218,7 +218,8 @@ $result = mysqli_query($db, $query);
                                             <p class="card-text"><?php echo $description ?></p>
                                             <p>
                                                 <a href="download.php?id=<?php echo $file_id ?>" target="_blank">
-                                                    Download file
+                                                    <i class="fas fa-file"></i>
+                                                    View file
                                                 </a>
                                             </p>
                                         </div>
