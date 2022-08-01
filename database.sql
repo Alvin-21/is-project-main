@@ -65,3 +65,6 @@ alter table `case_file`
 
 alter table `case_file`
   add `is_deleted` int not null default 0;
+
+alter table `case_file`
+  add `file_type` varchar(11);

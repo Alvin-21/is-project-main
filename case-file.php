@@ -29,7 +29,7 @@
 						<h2 class="heading-section">Case Upload Form</h2>
 					</div>
 					<div class="login-wrap py-0">
-						<form method="post" action="case-file-backend.php">
+						<form method="post" action="case-file-backend.php" enctype="multipart/form-data">
 							<div>
 								<?php if (isset($_SESSION['err'])) : ?>
 									<div class="error">

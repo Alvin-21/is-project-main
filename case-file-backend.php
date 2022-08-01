@@ -12,7 +12,9 @@
         $file_name = mysqli_real_escape_string($db,$_POST['file_name']);
         $case_number = mysqli_real_escape_string($db,$_POST['case_number']);
         $description = mysqli_real_escape_string($db,$_POST['description']);
-        $case_file = mysqli_real_escape_string($db,$_POST['case_file']);
+        $case_file = $_FILES["case_file"];
+        $file_type = $case_file["type"];
+        $file_blob = mysqli_real_escape_string($db, file_get_contents($case_file['tmp_name']));
 
         // check the database to make sure 
         // a case file does not already exist with the same case number
@@ -32,8 +34,8 @@
 
         if (count($errors) == 0) {
 
-            $query = "INSERT INTO case_file (file_id, user_id, case_number, file_name, file, description) 
-                    VALUES(null, '$user_id', '$case_number', '$file_name', '$case_file', '$description')";
+            $query = "INSERT INTO `case_file` (`user_id`, `case_number`, `file_name`, `file`, `description`, `file_type`) 
+                    VALUES('".$user_id."', '".$case_number."', '".$file_name."', '".$file_blob."', '".$description."', '".$file_type."')";
 
             $is_inserted = mysqli_query($db, $query);
 
