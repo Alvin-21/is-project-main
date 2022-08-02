@@ -54,6 +54,18 @@ if (!isset($_SESSION['is_logged_in'])) {
                                     <span class="bot-line"></span>
                                 </a>
                             </li>
+                            <?php
+
+                            if ($_SESSION['user_details']['user_type'] == 'admin') {
+
+                            ?>
+                                <li>
+                                    <a href="admin-page.php" class="font-size">
+                                        <i class="fas fa-user-shield"></i>Admin Panel
+                                        <span class="bot-line"></span>
+                                    </a>
+                                </li>
+                            <?php } ?>
                         </ul>
                     </div>
                     <div class="header__tool">
@@ -114,6 +126,16 @@ if (!isset($_SESSION['is_logged_in'])) {
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
+                        <?php
+
+                        if ($_SESSION['user_details']['user_type'] == 'admin') {
+
+                        ?>
+                            <li>
+                                <a class="js-arrow" href="admin-page.php">
+                                    <i class="fas fa-user-shield"></i>Admin Panel</a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
             </nav>
@@ -216,11 +238,17 @@ if (!isset($_SESSION['is_logged_in'])) {
             </section>
 
             <section>
-                <div class="pt-3">
-                    <a href="case-file.php" class="text-white btn btn-primary btn-custom rounded px-3 ml-4 mb-3">
-                        <i class="fas fa-file-upload"></i> Upload case file
-                    </a>
-                </div>
+                <?php
+
+                if (($_SESSION['user_details']['user_type'] == 'admin') || ($_SESSION['occupation'] == 'record_officer')) {
+
+                ?>
+                    <div class="pt-3">
+                        <a href="case-file.php" class="text-white btn btn-primary btn-custom rounded px-3 ml-4 mb-3">
+                            <i class="fas fa-file-upload"></i> Upload case file
+                        </a>
+                    </div>
+                <?php } ?>
             </section>
 
             <!-- CARDS FOR CASE FILES -->
@@ -253,12 +281,18 @@ if (!isset($_SESSION['is_logged_in'])) {
                                     <div class="card-body">
                                         <h5 class="card-title">
                                             <?php echo $file_name ?>
-                                            <a href="case-file-edit.php?fileID=<?php echo $file_id ?>">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a href="case-file-delete.php?fileID=<?php echo $file_id ?>">
-                                                <i class="fas fa-trash text-danger"></i>
-                                            </a>
+                                            <?php
+
+                                            if (($_SESSION['user_details']['user_type'] == 'admin') || ($_SESSION['occupation'] == 'record_officer')) {
+
+                                            ?>
+                                                <a href="case-file-edit.php?fileID=<?php echo $file_id ?>">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a href="case-file-delete.php?fileID=<?php echo $file_id ?>">
+                                                    <i class="fas fa-trash text-danger"></i>
+                                                </a>
+                                            <?php } ?>
                                         </h5>
                                         <p class="card-text">Case Number: <?php echo $case_number ?></p>
                                         <p class="card-text"><?php echo $description ?></p>

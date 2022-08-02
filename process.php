@@ -131,6 +131,29 @@ if (isset($_POST['login_user'])) {
   	$results = mysqli_query($db, $query);
   	if (mysqli_num_rows($results) == 1) {
       $logged_in_user = mysqli_fetch_assoc($results);
+      $user_id = $logged_in_user['user_id'];
+
+      $employee_query = "SELECT * FROM employee WHERE user_id='$user_id'";
+      $employee_results = mysqli_query($db, $employee_query);
+      $employee = mysqli_fetch_assoc($employee_results);
+      $employee_id = $employee['employee_id'];
+
+      $court_official_query = "SELECT * FROM court_official WHERE employee_id = '$employee_id'";
+      $court_official_results = mysqli_query($db, $court_official_query);
+
+      if (mysqli_num_rows($court_official_results) > 0) {
+        $court_official = mysqli_fetch_array($court_official_results);
+        $_SESSION['occupation'] = $court_official['occupation'];
+      }
+
+      $record_officer_query = "SELECT * FROM record_officer WHERE employee_id = '$employee_id'";
+      $record_officer_results = mysqli_query($db, $record_officer_query);
+
+      if (mysqli_num_rows($record_officer_results) > 0) {
+        $record_officer = mysqli_fetch_array($record_officer_results);
+        $_SESSION['occupation'] = $record_officer['occupation'];
+      }
+
       $_SESSION['user_details'] = $logged_in_user;
       $_SESSION['is_logged_in'] = true;
       $role = $logged_in_user['user_type'];
