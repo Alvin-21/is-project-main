@@ -4,6 +4,10 @@
 	if (!isset($_SESSION['is_logged_in'])) {
 		header('location: login.php');
 	}
+
+	if (!($_SESSION['occupation'] == 'record_officer') && (!isset($_SESSION['is_admin']))) {
+		header('location: login.php');
+	}
 ?>
 
 <?php include('process.php') ?>

@@ -5,6 +5,10 @@
 		header('location: login.php');
 	}
 
+	if (!($_SESSION['occupation'] == 'record_officer') && (!isset($_SESSION['is_admin']))) {
+		header('location: login.php');
+	}
+
     require_once("connection.php");
     $file_id = $_GET['fileID'];
     $query = "select * from case_file where file_id='".$file_id."'";
@@ -31,7 +35,7 @@
 	<style>
 		<?php include "css/style.css" ?>
 	</style>
-	<title>CMS | Case Upload</title>
+	<title>CMS | Case Edit</title>
 </head>
 
 <body>
@@ -40,7 +44,7 @@
 			<div class="row justify-content-center">
 				<div class="col-md-6 col-lg-4">
 					<div class="my-3">
-						<h2 class="heading-section">Case Upload Form</h2>
+						<h2 class="heading-section">Edit Case File Form</h2>
 					</div>
 					<div class="login-wrap py-0">
 						<form method="post" action="case-file-update.php?fileID=<?php echo $file_id; ?>">
