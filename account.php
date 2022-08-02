@@ -49,11 +49,23 @@ if (!isset($_SESSION['is_logged_in'])) {
                     <div class="header__navbar">
                         <ul class="list-unstyled">
                             <li>
-                                <a href="#" class="font-size">
+                                <a href="index.php" class="font-size">
                                     <i class="fas fa-tachometer-alt"></i>Dashboard
                                     <span class="bot-line"></span>
                                 </a>
                             </li>
+                            <?php
+
+                            if ($_SESSION['user_details']['user_type'] == 'admin') {
+
+                            ?>
+                                <li>
+                                    <a href="admin-page.php" class="font-size">
+                                        <i class="fas fa-user-shield"></i>Admin Panel
+                                        <span class="bot-line"></span>
+                                    </a>
+                                </li>
+                            <?php } ?>
                         </ul>
                     </div>
                     <div class="header__tool">
@@ -111,9 +123,19 @@ if (!isset($_SESSION['is_logged_in'])) {
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li>
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="index.php">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
+                        <?php
+
+                        if ($_SESSION['user_details']['user_type'] == 'admin') {
+
+                        ?>
+                            <li>
+                                <a class="js-arrow" href="admin-page.php">
+                                    <i class="fas fa-user-shield"></i>Admin Panel</a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
             </nav>
@@ -166,11 +188,11 @@ if (!isset($_SESSION['is_logged_in'])) {
                                 <div class="au-breadcrumb-left">
                                     <span class="au-breadcrumb-span">You are here:</span>
                                     <ul class="list-unstyled list-inline au-breadcrumb__list">
-                                        <li class="list-inline-item active">CMS</li>
+                                        <li class="list-inline-item active">Home</li>
                                         <li class="list-inline-item seprate">
                                             <span>/</span>
                                         </li>
-                                        <li class="list-inline-item">Home</li>
+                                        <li class="list-inline-item">Account</li>
                                     </ul>
                                 </div>
                             </div>
@@ -212,11 +234,18 @@ if (!isset($_SESSION['is_logged_in'])) {
                                                 <i class="fas fa-trash text-danger"></i>
                                             </a>
                                         </h5>
-                                        <p class="card-text">First Name: <?php echo $_SESSION['user_details']['f_name']; ?></p>
-                                        <p class="card-text">Last Name: <?php echo $_SESSION['user_details']['l_name']; ?></p>
-                                        <p class="card-text">Phone Number: <?php echo $_SESSION['user_details']['phone_number']; ?></p>
-                                        <p class="card-text">Username: <?php echo $_SESSION['user_details']['username']; ?></p>
-                                        <p class="card-text">Email: <?php echo $_SESSION['user_details']['email']; ?></p>
+                                        <p class="card-text"><strong>First Name: </strong><?php echo $_SESSION['user_details']['f_name']; ?></p>
+                                        <p class="card-text"><strong>Last Name: </strong><?php echo $_SESSION['user_details']['l_name']; ?></p>
+                                        <?php
+
+                                        if (isset($_SESSION['occupation'])) {
+
+                                        ?>
+                                            <p class="card-text"><strong>Occupation: </strong><?php echo $_SESSION['occupation']; ?></p>
+                                        <?php } ?>
+                                        <p class="card-text"><strong>Phone Number: </strong><?php echo $_SESSION['user_details']['phone_number']; ?></p>
+                                        <p class="card-text"><strong>Username: </strong><?php echo $_SESSION['user_details']['username']; ?></p>
+                                        <p class="card-text"><strong>Email: </strong><?php echo $_SESSION['user_details']['email']; ?></p>
                                     </div>
                                 </div>
                             </div>

@@ -63,12 +63,18 @@
 										Employee
 									</label>
 								</div>
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="user_type" id="admin" value="admin">
-									<label class="form-check-label" for="admin">
-										Admin
-									</label>
-								</div>
+								<?php 
+
+								if ($_SESSION['user_details']['user_type'] == 'admin') {
+
+								?>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="user_type" id="admin" value="admin">
+										<label class="form-check-label" for="admin">
+											Admin
+										</label>
+									</div>
+								<?php } ?>
 								<div id="temp_occupation"></div>
 								<div id="occupation">
 									<span>Select your occupation:</span>
