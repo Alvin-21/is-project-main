@@ -160,6 +160,7 @@ if (isset($_POST['login_user'])) {
 
       switch ($role) {
         case 'admin':
+          $_SESSION['is_admin'] = true;
           header('location: admin-page.php');
           break;
         
