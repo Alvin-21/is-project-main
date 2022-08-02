@@ -188,11 +188,11 @@ if (!isset($_SESSION['is_logged_in'])) {
                                 <div class="au-breadcrumb-left">
                                     <span class="au-breadcrumb-span">You are here:</span>
                                     <ul class="list-unstyled list-inline au-breadcrumb__list">
-                                        <li class="list-inline-item active">CMS</li>
+                                        <li class="list-inline-item active">Home</li>
                                         <li class="list-inline-item seprate">
                                             <span>/</span>
                                         </li>
-                                        <li class="list-inline-item">Home</li>
+                                        <li class="list-inline-item">Dashboard</li>
                                     </ul>
                                 </div>
                             </div>
