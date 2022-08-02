@@ -28,14 +28,19 @@
             array_push($errors, "The two passwords do not match");
         }
 
+        // first check the database to make sure 
+        // a user does not already exist with the same username
+        $user_check_query = "SELECT * FROM user WHERE username='$username' OR email='$email'";
+        $result = mysqli_query($db, $user_check_query);
+        $user = mysqli_fetch_assoc($result);
+
         if (count($errors) == 0) {
             $password = encryptPassword($password);
 
             $query = "update user set user_type = '".$user_type."', f_name = '".$f_name."', l_name = '".$l_name."', phone_number = '".$phone_number."', username = '".$username."', email = '".$email."', password = '".$password."' where user_id = '".$user_id."'";
 
-            $result = mysqli_query($db, $query);
-
-            if($result){
+            try {
+                $result = mysqli_query($db, $query);
                 switch ($user_type) {
                     case 'admin':
                         header("location: admin-page.php");
@@ -45,7 +50,12 @@
                         header("location: account.php");
                         break;
                 }
+            } catch (Exception $e) {
+                array_push($errors, "Username/Email already exists");
+                $_SESSION['errs'] = $errors;
+                header("Location: user-edit.php?userID=$user_id");
             }
+
         } else {
             $_SESSION['errs'] = $errors;
 
