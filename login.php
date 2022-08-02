@@ -30,12 +30,7 @@
 									<label class="form-label">Password</label>
 									<input type="password" name="password" class="form-control black" placeholder="********" autocomplete="current-password" required>
 								</div>
-								<div class="form-group my-3 d-md-flex">
-									<div class="w-100 text-md-end">
-										<a href="#" aria-disabled="true">Forgot Password</a>
-									</div>
-								</div>
-								<div class="form-group">
+								<div class="form-group my-4">
 									<button type="submit" name="login_user" class="btn form-control btn-primary rounded submit px-3 btn-custom">Login</button>
 								</div>
 							</form>

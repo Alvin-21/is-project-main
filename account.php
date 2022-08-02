@@ -231,7 +231,7 @@ if (!isset($_SESSION['is_logged_in'])) {
                     <div class="row">
                         <div class="col-md-12">
                             <div class="copyright">
-                                <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                                <p>Copyright © 2022 CMS. All rights reserved. Alvin Awuor.</p>
                             </div>
                         </div>
                     </div>
